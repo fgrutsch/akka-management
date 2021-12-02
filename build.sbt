@@ -264,7 +264,10 @@ lazy val `integration-test-aws-api-ecs` = project
   .enablePlugins(AutomateHeaderPlugin)
   .settings(
     publish / skip := true,
-    doc / sources := Seq.empty
+    doc / sources := Seq.empty,
+    libraryDependencies ++= Seq(
+        "com.github.matsluni" %% "aws-spi-akka-http" % "0.0.11"
+      )
   )
   .dependsOn(
     `akka-management`,

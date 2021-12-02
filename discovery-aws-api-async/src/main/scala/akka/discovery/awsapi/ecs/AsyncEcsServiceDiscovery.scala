@@ -43,6 +43,11 @@ class AsyncEcsServiceDiscovery(system: ActorSystem) extends ServiceDiscovery {
 
   private[this] lazy val ecsClient = {
     val conf = ClientOverrideConfiguration.builder().retryPolicy(RetryPolicy.none).build()
+    
+    // FIX
+    // val httpClient = NettyNioAsyncHttpClient.create()
+    // EcsAsyncClient.builder().overrideConfiguration(conf).httpClient(httpClient).build()
+    
     EcsAsyncClient.builder().overrideConfiguration(conf).build()
   }
 
